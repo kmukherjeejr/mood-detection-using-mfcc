@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Assistant', sans-serif;
+  background-image: linear-gradient(to bottom, #212121, #614D5E, #A36776, #DF8875);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+button:focus { outline-style: none; }
+
+div {
+  margin: 0;
+}
+
+.header {
+    font-weight: 700;
+    height: 15vh;
+    text-transform: uppercase;
+    padding-top: 1vh;
+    background: rgb(0,0,0,0.5);
+}
+
+.header h1 {
+    font-size: 80px;
+}
+
+.header h2 {
+    font-size: 48px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 74vh;
+
+}
+
+.container div {
+    width: 80%;
+}
+
+.mooddiv {
+    margin-left: 125px;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mooddiv p {
+    padding-top: 10vh;
+    font-size: 35px;
+    font-weight: 300;
+}
+
+.mooddiv p span {
+    font-weight: 900;
+}
+
+.mooddiv #speechtext {
+    font-weight: 900;
+    color: rgb(255,255,255,0.5);
+}
+
+.buttondiv {
+    display: flex;
+    justify-content: center;
+    margin-left: 125px;
+    height: 10vh;
+}
+
+.buttondiv #start {
+    background: #048E04;
+    color: white;
+    border-radius: 128px;
+    border-style: none;
+    width: 10vh;
+    margin: 0 50px 0 50px;
+    font-size: 5vh;
+}
+
+.buttondiv #start:hover {
+    background: #26AF26;
+}
+
+.buttondiv #start:active {
+    background: #026C02;
+}
+
+.buttondiv #stop {
+    background: #FF0000;
+    color: white;
+    border-radius: 128px;
+    border-style: none;
+    width: 10vh;
+    margin: 0 50px 0 50px;
+    font-size: 5vh;
+}
+
+.buttondiv #stop:hover {
+    background: #FF2222;
+}
+
+.buttondiv #stop:active {
+    background: #CC0000;
+}
+
+.footer {
+    height: 10vh;
+    color: rgb(0,0,0,0.5);
+    }
+
+.footer marquee{
+    margin-top: 6vh;
+}
+
+.footer span {
+    font-weight: 900;
+}
+
+@media (max-width: 900px) {
+    .header {
+        height: 15vh;
+        padding-top: 5vh;
+        background: rgb(0,0,0,0.5);
+    }
+
+    .header h1 {
+        font-size: 44px;
+    }
+
+    .header h2 {
+        font-size: 24px;
+    }
+
+    .mooddiv {
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-left: 40px;
+    }
+
+    #mooddiv {
+        margin-left: 50px!important;
+    }
+
+    .mooddiv p {
+    padding-top: 10vh;
+    font-size: 35px;
+    font-weight: 300;
+    }
+
+    .mooddiv p span {
+        font-weight: 900;
+    }
+
+    .mooddiv #speechtext {
+        font-weight: 900;
+        color: rgb(255,255,255,0.5);
+    }
+
+    .buttondiv {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    margin-left: 30px;
+}
+
+.buttondiv #start {
+    background: #048E04;
+    color: white;
+    border-radius: 128px;
+    border-style: none;
+    width: 10vh;
+    margin: 0 30px 0 0;
+    font-size: 5vh;
+}
+
+.buttondiv #start:hover {
+    background: #26AF26;
+}
+
+.buttondiv #start:active {
+    background: #026C02;
+}
+
+.buttondiv #stop {
+    background: #FF0000;
+    color: white;
+    border-radius: 128px;
+    border-style: none;
+    width: 10vh;
+    margin: 0 0 0 30px;
+    font-size: 5vh;
+}
+
+.buttondiv #stop:hover {
+    background: #FF2222;
+}
+
+.buttondiv #stop:active {
+    background: #CC0000;
+}
+
+.footer {
+    height: 10vh;
+    color: rgb(0,0,0,0.5);
+    }
+
+.footer marquee{
+    margin-top: 6vh;
+}
+
+.footer span {
+    font-weight: 900;
+}
+
+}

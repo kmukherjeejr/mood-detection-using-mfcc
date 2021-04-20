@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mood Detection using MFCC</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favico.ico') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cssreset.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 align="center">Mood Detection</h1>
+      <h2 align="center">using MFCC</h2>
+    </header>
+
+    <div class="container">
+      <div>
+        <div class="mooddiv" id="mooddiv">
+          <p>You sound like you're <span id="moodtext">????</span></p>
+        </div>
+
+        <div class="mooddiv">
+          <p id="speechtext">Speak Now</p>
+        </div>
+
+        <div class="buttondiv">
+          <button id="start" class="fas fa-microphone"  aria-hidden="true"></button>
+          <button id="stop"  class="fas fa-microphone-slash"  aria-hidden="true"></button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <marquee>
+        <span>This whole project is created by:</span>
+        Shatanik Chakraborty, Krishnendu Mukherjee, Sanket Tewary, Samapti Trafder and Subham Roy.
+        This project was supervised and mentored by Prof. Suvendu Chattaraj and Prof. Amartya Chakraborty.
+      </marquee>
+    </footer>
+  </body>
+  
+</html>
+

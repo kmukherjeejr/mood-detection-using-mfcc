@@ -18,18 +18,27 @@ import numpy as np
 import soundfile
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score
 
 """## 2. MFCC function definition"""
 
 
-def extract_feature(file_name, mfcc):
+def extract_feature(file_name, mfcc, chroma, mel):
     with soundfile.SoundFile(file_name) as sound_file:
         X = sound_file.read(dtype="float32")
         sample_rate = sound_file.samplerate
+        if chroma:
+            stft = np.abs(librosa.stft(X))
         result = np.array([])
         if mfcc:
             mfccs = np.mean(librosa.feature.mfcc(y=X, sr=sample_rate, n_mfcc=13).T, axis=0)
             result = np.hstack((result, mfccs))
+        if chroma:
+            chroma = np.mean(librosa.feature.chroma_stft(S=stft, sr=sample_rate).T, axis=0)
+            result = np.hstack((result, chroma))
+        if mel:
+            mel = np.mean(librosa.feature.melspectrogram(X, sr=sample_rate).T, axis=0)
+            result = np.hstack((result, mel))
     return result
 
 
@@ -58,15 +67,15 @@ def load_data(test_size=0.2):
         emotion = emotions[file_name.split("-")[2]]
         if emotion not in observed_emotions:
             continue
-        feature = extract_feature(file, mfcc=True)
+        feature = extract_feature(file, mfcc=True, chroma=True, mel=True)
         x.append(feature)
         y.append(emotion)
-    return train_test_split(np.array(x), y, test_size=test_size, random_state=8)
+    return train_test_split(np.array(x), y, test_size=test_size, random_state=9)
 
 
 """## 4. Loading test and train data"""
 
-x_train, x_test, y_train, y_test = load_data(test_size=0.1)
+x_train, x_test, y_train, y_test = load_data(test_size=0.25)
 
 """## 5. MLP Classifier"""
 
@@ -78,15 +87,26 @@ model = MLPClassifier(alpha=0.01, batch_size=256, epsilon=1e-08, hidden_layer_si
 model.fit(x_train, y_train)
 
 """### 5.2 Predict the data"""
-test = np.array(
-    extract_feature('E:\\Documents\\PyCharmProjects\\mood_detection_using_mfcc\\assets\\output\\test_input.wav',
-                    mfcc=True)).reshape(1, -1)
-y_pred = model.predict(test)
+# test = np.array(
+#     extract_feature('E:\\Documents\\PyCharmProjects\\mood_detection_using_mfcc\\assets\\output\\test_input.wav',
+#                     mfcc=True)).reshape(1, -1)
+y_pred = model.predict(x_test)
 
-# """## 6. Accuracy score"""
-#
-# accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
+"""## 6. Accuracy score"""
 
-# print("Accuracy: {:.2f}%".format(accuracy * 100))
+accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
 
-print(y_pred)
+print("Accuracy: {:.2f}%".format(accuracy * 100))
+
+# print(y_pred)
+
+
+def new_result(file='E:/Documents/PyCharmProjects/mood_detection_using_mfcc/static/output/test_input.wav'):
+    test = np.array(
+        extract_feature(file,
+                        mfcc=True, chroma=True, mel=True)).reshape(1, -1)
+    y_pred = model.predict(test)
+    return y_pred
+
+
+print(new_result())

@@ -51,7 +51,7 @@ div {
 }
 
 .mooddiv {
-    margin-left: 125px;
+    margin-left: 110px;
     height: 30vh;
     display: flex;
     justify-content: center;
@@ -76,7 +76,13 @@ div {
 .buttondiv {
     display: flex;
     justify-content: center;
-    margin-left: 125px;
+    margin-left: 110px;
+    height: 10vh;
+}
+
+.formdiv {
+    display: flex;
+    justify-content: center;
     height: 10vh;
 }
 
@@ -149,11 +155,11 @@ div {
         display: flex;
         justify-content: center;
         width: 100%;
-        margin-left: 40px;
+        margin-left: 30px;
     }
 
     #mooddiv {
-        margin-left: 50px!important;
+        margin-left: 45px!important;
     }
 
     .mooddiv p {
@@ -176,6 +182,12 @@ div {
     justify-content: center;
     height: 10vh;
     margin-left: 30px;
+}
+
+.formdiv {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
 }
 
 .buttondiv #start {
@@ -202,7 +214,6 @@ div {
     border-radius: 128px;
     border-style: none;
     width: 10vh;
-    margin: 0 0 0 30px;
     font-size: 5vh;
 }
 

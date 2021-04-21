@@ -1,1 +1,1 @@
-web: gunicorn --worker-class gevent --log-level debug --bind 0.0.0.0:8080 app:app
+web: gunicorn --worker-class gevent --timeout 120 --keep-alive 5 --log-level debug --bind 0.0.0.0:8080 app:app

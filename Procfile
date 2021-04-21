@@ -1,1 +1,1 @@
-web: python app.py
+web: gunicorn --worker-class sync --timeout 600 --keep-alive 5 --log-level debug --bind 0.0.0.0:8080 app:app

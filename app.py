@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 
 import glob
 import os
@@ -53,7 +53,7 @@ observed_emotions = ['neutral', 'calm', 'happy', 'sad', 'angry', 'fearful', 'dis
 
 def load_data(test_size=0.2):
     x, y = [], []
-    for file in glob.glob("D:\\Downloads\\Audio_Speech_Actors_01-24\\Actor_*\\macro-output\\*.wav"):
+    for file in glob.glob("static\\Audio_Speech_Actors_01-24\\Actor_*\\macro-output\\*.wav"):
         file_name = os.path.basename(file)
         emotion = emotions[file_name.split("-")[2]]
         if emotion not in observed_emotions:
@@ -84,7 +84,7 @@ accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
 print("Accuracy: {:.2f}%".format(accuracy * 100))
 
 
-def new_result(file='E:/Documents/PyCharmProjects/mood_detection_using_mfcc/static/output/test_input.wav'):
+def new_result(file='static/output/test_input.wav'):
     test = np.array(
         extract_feature(file,
                         mfcc=True, chroma=True, mel=True)).reshape(1, -1)

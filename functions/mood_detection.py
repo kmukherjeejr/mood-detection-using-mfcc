@@ -62,7 +62,7 @@ observed_emotions = ['neutral', 'happy', 'angry']
 
 def load_data(test_size=0.2):
     x, y = [], []
-    for file in glob.glob("D:\\Downloads\\Audio_Speech_Actors_01-24\\Actor_*\\macro-output\\*.wav"):
+    for file in glob.glob("static\\Audio_Speech_Actors_01-24\\Actor_*\\macro-output\\*.wav"):
         file_name = os.path.basename(file)
         emotion = emotions[file_name.split("-")[2]]
         if emotion not in observed_emotions:
@@ -101,7 +101,7 @@ print("Accuracy: {:.2f}%".format(accuracy * 100))
 # print(y_pred)
 
 
-def new_result(file='E:/Documents/PyCharmProjects/mood_detection_using_mfcc/static/output/test_input.wav'):
+def new_result(file='static/output/test_input.wav'):
     test = np.array(
         extract_feature(file,
                         mfcc=True, chroma=True, mel=True)).reshape(1, -1)

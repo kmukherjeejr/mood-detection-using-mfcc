@@ -2,7 +2,7 @@ import sounddevice
 from scipy.io.wavfile import write
 
 sr = 44100  # Sample rate
-seconds = 5  # Audio recorded for 10 seconds
+seconds = 5  # Audio recorded for 5 seconds
 
 
 def start_rec(sr=sr, seconds=seconds):

@@ -12,6 +12,7 @@ Original file is located at
 import glob
 import os
 
+import pickle
 import librosa
 import librosa.display
 import numpy as np
@@ -55,14 +56,14 @@ emotions = {
     '08': 'surprised'
 }
 
-observed_emotions = ['neutral', 'happy', 'angry']
+observed_emotions = ['neutral', 'happy', 'sad', 'angry']
 
 """## 3. Load test/train data function (single)"""
 
 
 def load_data(test_size=0.2):
     x, y = [], []
-    for file in glob.glob("static\\Audio_Speech_Actors_01-24\\Actor_*\\macro-output\\*.wav"):
+    for file in glob.glob("../static/Audio_Speech_Actors_01-24/Actor_*/macro-output/*.wav"):
         file_name = os.path.basename(file)
         emotion = emotions[file_name.split("-")[2]]
         if emotion not in observed_emotions:
@@ -87,9 +88,7 @@ model = MLPClassifier(alpha=0.01, batch_size=256, epsilon=1e-08, hidden_layer_si
 model.fit(x_train, y_train)
 
 """### 5.2 Predict the data"""
-# test = np.array(
-#     extract_feature('E:\\Documents\\PyCharmProjects\\mood_detection_using_mfcc\\assets\\output\\test_input.wav',
-#                     mfcc=True)).reshape(1, -1)
+
 y_pred = model.predict(x_test)
 
 """## 6. Accuracy score"""
@@ -98,15 +97,4 @@ accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
 
 print("Accuracy: {:.2f}%".format(accuracy * 100))
 
-# print(y_pred)
-
-
-def new_result(file='static/output/test_input.wav'):
-    test = np.array(
-        extract_feature(file,
-                        mfcc=True, chroma=True, mel=True)).reshape(1, -1)
-    y_pred = model.predict(test)
-    return y_pred
-
-
-print(new_result())
+pickle.dump(model, open('../trained_model/model.pkl', 'wb'))
